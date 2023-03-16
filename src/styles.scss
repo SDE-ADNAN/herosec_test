@@ -56,7 +56,7 @@
 
   > li {
     display: flex;
-    opacity: 0.7;
+    // opacity: 0.7;
     position: absolute;
     border-radius: 50%;
     justify-content: center;
@@ -80,36 +80,37 @@
         // transform-origin: center;
       }
       &:hover {
-        opacity: 1;
+        // opacity: 1;
         position: relative;
         background: linear-gradient(0deg, #000, #262626);
         border-radius: 50%;
+        filter: grayscale(100);
 
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          z-index: -3;
-          border-radius: 50%;
-          background: linear-gradient(
-            45deg,
-            #fb0094,
-            #0000ff,
-            #00ff00,
-            #ffff00,
-            #fb0094,
-            #0000ff,
-            #00ff00,
-            #ffff00
-          );
-          -webkit-background-size: 600%;
-          background-size: 600%;
-          width: calc(100% + 4px);
-          height: calc(100% + 4px);
-          top: -2px;
-          left: -2px;
-          animation: animate 15s linear infinite;
-        }
+        // &::before,
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   z-index: -3;
+        //   border-radius: 50%;
+        //   background: linear-gradient(
+        //     45deg,
+        //     #fb0094,
+        //     #0000ff,
+        //     #00ff00,
+        //     #ffff00,
+        //     #fb0094,
+        //     #0000ff,
+        //     #00ff00,
+        //     #ffff00
+        //   );
+        //   -webkit-background-size: 600%;
+        //   background-size: 600%;
+        //   width: calc(100% + 4px);
+        //   height: calc(100% + 4px);
+        //   top: -2px;
+        //   left: -2px;
+        //   animation: animate 15s linear infinite;
+        // }
       }
 
       $rot: $rot + $angle;
@@ -127,7 +128,7 @@
 }
 
 .circle-container {
-  @include on-circle($item-count: 16, $circle-size: 30em, $item-size: 4em);
+  @include on-circle($item-count: 16, $circle-size: 23em, $item-size: 2em);
   // border: solid 5px tomato;
   -webkit-animation: rotating 2s linear infinite;
   -moz-animation: rotating 2s linear infinite;
@@ -140,7 +141,7 @@
       animation: spin 20s linear infinite reverse;
       img{
         z-index: 2;
-        width:85px;
+        width:80px;
       }
     }
   }
