@@ -217,10 +217,10 @@
   background-size: 600%;
   width: calc(100% + 80px);
   height: calc(100% + 90px);
-  top: -2px;
-  left: -2px;
+  // top: -2px;
+  // left: -2px;
   animation: animate 15s linear infinite;
-  filter: blur(13px);
+  filter: blur(150px);
 }
 
 @keyframes animate {
@@ -236,5 +236,5 @@
 }
 
 .box:after {
-  filter: blur(13px);
+  filter: blur(150px);
 }
