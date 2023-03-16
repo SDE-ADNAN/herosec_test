@@ -144,6 +144,11 @@
   -o-animation: rotating 2s linear infinite;
   animation: rotating 30s linear infinite;
 
+  @media (max-width:768px){
+    @include on-circle($item-count: 16, $circle-size: 18em, $item-size: 3em);
+  }
+
+
   li {
     div {
       position: relative;
@@ -180,6 +185,12 @@
     img {
       width: 240px;
       border-radius: 50%;
+    }
+    @media (max-width:768px){
+      img {
+        width: 150px;
+        border-radius: 50%;
+      }
     }
   }
 }
