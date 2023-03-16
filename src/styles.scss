@@ -34,36 +34,29 @@
   animation: rotating 2s linear infinite;
 }
 
-/// Mixin to place items on a circle
-/// @author Hugo Giraudel
-/// @author Ana Tudor
 /// @param {Integer} $item-count - Number of items on the circle
 /// @param {Length} $circle-size - Large circle size
 /// @param {Length} $item-size - Single item size
 
-@mixin random-bgr($colornum){
-  background: rgb(random($colornum + 20), random($colornum + 10), random($colornum + 2));
+@mixin random-bgr($colornum) {
+  background: rgb(
+    random($colornum + 20),
+    random($colornum + 10),
+    random($colornum + 2)
+  );
 }
 
-ul:hover > li {
-  opacity: 0.5;
-}
-
-nav ul:hover > li:hover {
-  opacity: 1;
-}
-
-@mixin on-circle($item-count, $circle-size, $item-size) {  
+@mixin on-circle($item-count, $circle-size, $item-size) {
   position: relative;
-  width:  $circle-size;
+  width: $circle-size;
   height: $circle-size;
   border-radius: 50%;
-  padding: 0; 
+  padding: 0;
   list-style: none;
-  
+
   > li {
     display: flex;
-    opacity: 0.5;
+    opacity: 0.7;
     position: absolute;
     border-radius: 50%;
     justify-content: center;
@@ -72,7 +65,7 @@ nav ul:hover > li:hover {
     top: 50%;
     left: 50%;
     margin: -($item-size / 2);
-    width:  $item-size;
+    width: $item-size;
     height: $item-size;
     transition: all 0.25s cubic-bezier(0.76, 0, 0.24, 1);
     $angle: (360 / $item-count);
@@ -80,33 +73,61 @@ nav ul:hover > li:hover {
 
     @for $i from 1 through $item-count {
       &:nth-of-type(#{$i}) {
-        @include random-bgr($item-size +300);
-        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+        @include random-bgr($item-size + 300);
+        transform: rotate($rot * 1deg)
+          translate($circle-size / 2)
+          rotate($rot * -1deg);
         // transform-origin: center;
       }
-      &:hover{
+      &:hover {
         opacity: 1;
-        // transform:scale(120%);
-        // transform-origin: center;
-    }
-      
+        position: relative;
+        background: linear-gradient(0deg, #000, #262626);
+        border-radius: 50%;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: -3;
+          border-radius: 50%;
+          background: linear-gradient(
+            45deg,
+            #fb0094,
+            #0000ff,
+            #00ff00,
+            #ffff00,
+            #fb0094,
+            #0000ff,
+            #00ff00,
+            #ffff00
+          );
+          -webkit-background-size: 600%;
+          background-size: 600%;
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          top: -2px;
+          left: -2px;
+          animation: animate 15s linear infinite;
+        }
+      }
+
       $rot: $rot + $angle;
     }
   }
 }
 
 @keyframes spin {
-  0%{
-    transform:rotate(0deg)
+  0% {
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
 }
 
-
 .circle-container {
-  @include on-circle($item-count: 14, $circle-size: 20em, $item-size: 4em); 
+  @include on-circle($item-count: 16, $circle-size: 30em, $item-size: 4em);
   // border: solid 5px tomato;
   -webkit-animation: rotating 2s linear infinite;
   -moz-animation: rotating 2s linear infinite;
@@ -114,71 +135,32 @@ nav ul:hover > li:hover {
   -o-animation: rotating 2s linear infinite;
   animation: rotating 20s linear infinite;
 
- 
-
-  li{
-    div{
+  li {
+    div {
       animation: spin 20s linear infinite reverse;
+      img{
+        z-index: 2;
+        width:85px;
+      }
     }
   }
-
-
 }
 
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 
-.main{
-  width:100vw;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
-
-  .image{
-    position:absolute;
-    img{
-      width:210px;
+  .image {
+    position: absolute;
+    img {
+      width: 210px;
       border-radius: 50%;
       // border:5px solid aquamarine
     }
-  }
-}
-
-.animated-border {
-  border: 5px solid transparent;
-  animation: border-animation 10s linear infinite;
-}
-
-@keyframes border-animation {
-  0% {
-    border-top-color: rgb(255, 0, 0);
-    border-right-color: rgb(255, 255, 0);
-    border-bottom-color: rgb(0, 255, 0);
-    border-left-color: rgb(0, 0, 255);
-  }
-  25% {
-    border-top-color: rgb(0, 255, 0);
-    border-right-color: rgb(255, 0, 0);
-    border-bottom-color: rgb(255, 255, 0);
-    border-left-color: rgb(0, 0, 255);
-  }
-  50% {
-    border-top-color: rgb(255, 255, 0);
-    border-right-color: rgb(0, 255, 0);
-    border-bottom-color: rgb(255, 0, 0);
-    border-left-color: rgb(0, 0, 255);
-  }
-  75% {
-    border-top-color: rgb(255, 0, 0);
-    border-right-color: rgb(255, 255, 0);
-    border-bottom-color: rgb(0, 255, 0);
-    border-left-color: rgb(0, 0, 255);
-  }
-  100% {
-    border-top-color: rgb(0, 255, 0);
-    border-right-color: rgb(255, 0, 0);
-    border-bottom-color: rgb(255, 255, 0);
-    border-left-color: rgb(0, 0, 255);
   }
 }
 
@@ -188,12 +170,23 @@ nav ul:hover > li:hover {
   border-radius: 50%;
 }
 
-.box:before, .box:after {
-  content: '';
+.box:before,
+.box:after {
+  content: "";
   position: absolute;
   z-index: -1;
   border-radius: 50%;
-  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00);
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00
+  );
   -webkit-background-size: 600%;
   background-size: 600%;
   width: calc(100% + 4px);
@@ -206,10 +199,12 @@ nav ul:hover > li:hover {
 @keyframes animate {
   0% {
     background-position: 0 0;
-  } 50% {
+  }
+  50% {
     background-position: 100% 0;
-  } 100% {
-    background-position: 0 0; 
+  }
+  100% {
+    background-position: 0 0;
   }
 }
 
