@@ -45,6 +45,14 @@
   background: rgb(random($colornum + 20), random($colornum + 10), random($colornum + 2));
 }
 
+ul:hover > li {
+  opacity: 0.5;
+}
+
+nav ul:hover > li:hover {
+  opacity: 1;
+}
+
 @mixin on-circle($item-count, $circle-size, $item-size) {  
   position: relative;
   width:  $circle-size;
@@ -55,6 +63,7 @@
   
   > li {
     display: flex;
+    opacity: 0.5;
     position: absolute;
     border-radius: 50%;
     justify-content: center;
@@ -65,9 +74,7 @@
     margin: -($item-size / 2);
     width:  $item-size;
     height: $item-size;
- 
-    
-  
+    transition: all 0.25s cubic-bezier(0.76, 0, 0.24, 1);
     $angle: (360 / $item-count);
     $rot: 0;
 
@@ -75,9 +82,14 @@
       &:nth-of-type(#{$i}) {
         @include random-bgr($item-size +300);
         transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
-        // animation: rotating 20s linear infinite reverse;
+        // transform-origin: center;
       }
-
+      &:hover{
+        opacity: 1;
+        // transform:scale(120%);
+        // transform-origin: center;
+    }
+      
       $rot: $rot + $angle;
     }
   }
