@@ -114,10 +114,10 @@
           top: -2px;
           left: -2px;
           animation: animate 15s linear infinite;
-          filter: blur(13px);
+          filter: blur(150px);
         }
         &:after {
-          filter: blur(10px);
+          filter: blur(150px);
         }
       }
 
@@ -145,7 +145,7 @@
   animation: rotating 30s linear infinite;
 
   @media (max-width:768px){
-    @include on-circle($item-count: 16, $circle-size: 18em, $item-size: 3em);
+    @include on-circle($item-count: 16, $circle-size: 20em, $item-size: 3em);
   }
 
 
@@ -236,14 +236,21 @@
       background: linear-gradient(45deg,#fb0094,blue,lime,#ff0,#fb0094,blue,lime,#ff0);
       background-size: 600%;
       content: "";
-      -webkit-filter: blur(150px);
-      filter: blur(30px);
-      height: calc(100% + 41px);
+      -webkit-filter: blur(30px) !important;
+      filter: blur(30px) !important;
+      height: calc(100% + -40px);
       position: absolute;
-      width: calc(100% + 41px);
+      width: calc(100% + -40px);
       z-index: -1;
     }
+
   }
+  // &::after{
+  //   display:none
+  // }
+  // &::before{
+  //   display:none
+  // }
 }
 
 
