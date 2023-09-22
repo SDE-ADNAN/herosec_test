@@ -2,8 +2,8 @@ import React from 'react'
 import './GradiantBlur.scss'
 
 const GradiantBlur = () => {
-    return (
-        <div id="wrapper">
+    return (<>
+    <div id="wrapper">
             <ul>
                 <li>Item 1</li>
                 <li>Item 2</li>
@@ -56,15 +56,17 @@ const GradiantBlur = () => {
                 <li>Item 9</li>
                 <li>Item 10</li>
             </ul>
-            <div class="gradient-blur">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            
         </div>
+        <div class="gradient-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div></>
+        
     )
 }
 
