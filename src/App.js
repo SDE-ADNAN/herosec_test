@@ -1,11 +1,12 @@
 import "./styles.scss";
 import profile from "./viewPhoto.jpeg";
 import emojis from "./assets"
+import GradiantBlur from "./components/gradiantBlur/GradiantBlur";
 
 export default function App() {
 
 
-  return (
+  return (<>
     <div className="main">
       <div className="image box">
         <img className="" src={profile} alt="profile" />
@@ -20,5 +21,10 @@ export default function App() {
         )}
       </ul>
     </div>
+    <div className='gradiant_blur_div'>
+		<div className='heading'>Gradiant Blur Experiment</div>
+    	<GradiantBlur/>
+    </div>
+    </>
   );
 }
