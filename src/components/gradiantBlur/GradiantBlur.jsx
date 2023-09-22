@@ -1,4 +1,5 @@
 import React from 'react'
+import './GradiantBlur.scss'
 
 const GradiantBlur = () => {
     return (
