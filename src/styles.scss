@@ -272,3 +272,19 @@ body{
     }
   }
 }
+
+.master_container{
+  width:100vw;
+  height:100vh;
+  overflow: scroll;
+
+  &>img{
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    width: 100vw;
+    position:absolute;
+    z-index: -1;
+  }
+}
